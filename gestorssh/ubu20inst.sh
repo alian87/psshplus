@@ -44,7 +44,7 @@ function inst_base
 	mv composer.phar /usr/local/bin/composer
 	chmod +x /usr/local/bin/composer
 	cd /var/www/html || exit
-	wget https://github.com/JeanRocha91x/psshplus-/raw/main/gestorssh/gestorssh18.zip > /dev/null 2>&1
+	wget https://raw.githubusercontent.com/alian87/psshplus/main3/gestorssh/gestorssh18.zip > /dev/null 2>&1
 	apt-get install unzip > /dev/null 2>&1
 	unzip gestorssh18.zip > /dev/null 2>&1
 	chmod -R 777 /var/www/html
@@ -77,7 +77,7 @@ function pconf
 function inst_db
 { 
 	cd || exit
-	wget https://github.com/JeanRocha91x/psshplus-/raw/main/gestorssh/bdgestorssh.sql > /dev/null 2>&1
+	wget https://raw.githubusercontent.com/alian87/psshplus/main3/gestorssh/bdgestorssh.sql > /dev/null 2>&1
 	sleep 1
 	if [[ -e "$HOME/bdgestorssh.sql" ]]; then
 		mysql -h localhost -u root -p"$pwdroot" --default_character_set utf8 sshplus < bdgestorssh.sql
@@ -128,8 +128,8 @@ function fun_swap
 function tst_bkp
 {
 	cd /bin || exit
-	wget https://github.com/JeanRocha91x/psshplus-/raw/main/gestorssh/userteste.sh
-	wget https://github.com/JeanRocha91x/psshplus-/raw/main/gestorssh/autobackup.sh
+	wget https://raw.githubusercontent.com/alian87/psshplus/main3/gestorssh/userteste.sh
+	wget https://raw.githubusercontent.com/alian87/psshplus/main3/gestorssh/autobackup.sh
 	chmod 777 /bin/userteste.sh > /dev/null 2>&1
 	chmod 777 /bin/autobackup.sh > /dev/null 2>&1
 	mkdir /root/backupsql > /dev/null 2>&1
