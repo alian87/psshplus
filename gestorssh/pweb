@@ -45,22 +45,24 @@ fun_atpweb () {
     rm /bin/pweb > /dev/null 2>&1
     sleep 5
     cd /bin || exit
-    wget https://github.com/JeanRocha91x/psshplus-/raw/main/gestorssh/pweb > /dev/null 2>&1
+    wget https://raw.githubusercontent.com/alian87/psshplus/main/gestorssh/pweb > /dev/null 2>&1
     chmod 777 pweb > /dev/null 2>&1
     clear
     mkdir /bin/ppweb > /dev/null 2>&1
 cd /bin/ppweb || exit
 rm *.sh > /dev/null 2>&1
-wget https://github.com/JeanRocha91x/psshplus-/raw/main/gestorssh/install.sh > /dev/null 2>&1
-wget https://github.com/JeanRocha91x/psshplus-/raw/main/gestorssh/ubuinst.sh > /dev/null 2>&1
-wget https://github.com/JeanRocha91x/psshplus-/raw/main/gestorssh/senharoot.sh > /dev/null 2>&1
-wget https://github.com/JeanRocha91x/psshplus-/raw/main/gestorssh/restbanco.sh > /dev/null 2>&1
-wget https://github.com/JeanRocha91x/psshplus-/raw/main/gestorssh/restbanco18.sh > /dev/null 2>&1
-wget https://github.com/JeanRocha91x/psshplus-/raw/main/gestorssh/empresa.sh > /dev/null 2>&1
-wget https://github.com/JeanRocha91x/psshplus-/raw/main/gestorssh/updatepainel.sh > /dev/null 2>&1
-wget https://github.com/JeanRocha91x/psshplus-/raw/main/gestorssh/updatepainel18.sh > /dev/null 2>&1
-wget https://github.com/JeanRocha91x/psshplus-/raw/main/gestorssh/updatepainelarm.sh > /dev/null 2>&1
-wget https://github.com/JeanRocha91x/psshplus-/raw/main/gestorssh/updatepainelarm18.sh > /dev/null 2>&1
+wget https://raw.githubusercontent.com/alian87/psshplus/main/gestorssh/install.sh
+wget https://raw.githubusercontent.com/alian87/psshplus/main/gestorssh/install.sh > /dev/null 2>&1
+wget https://raw.githubusercontent.com/alian87/psshplus/main/gestorssh/ubuinst.sh > /dev/null 2>&1
+wget https://raw.githubusercontent.com/alian87/psshplus/main/gestorssh/ubu20inst.sh > /dev/null 2>&1
+wget https://raw.githubusercontent.com/alian87/psshplus/main/gestorssh/senharoot.sh > /dev/null 2>&1
+wget https://raw.githubusercontent.com/alian87/psshplus/main/gestorssh/restbanco.sh > /dev/null 2>&1
+wget https://raw.githubusercontent.com/alian87/psshplus/main/gestorssh/restbanco18.sh > /dev/null 2>&1
+wget https://raw.githubusercontent.com/alian87/psshplus/main/gestorssh/empresa.sh > /dev/null 2>&1
+wget https://raw.githubusercontent.com/alian87/psshplus/main/gestorssh/updatepainel.sh > /dev/null 2>&1
+wget https://raw.githubusercontent.com/alian87/psshplus/main/gestorssh/updatepainel18.sh > /dev/null 2>&1
+wget https://raw.githubusercontent.com/alian87/psshplus/main/gestorssh/updatepainelarm.sh > /dev/null 2>&1
+wget https://raw.githubusercontent.com/alian87/psshplus/main/gestorssh/updatepainelarm18.sh > /dev/null 2>&1
 chmod 777 *.sh > /dev/null 2>&1
 clear
 }
@@ -81,12 +83,16 @@ echo ""
 echo ""  
 echo -e "\033[1;36mSELECIONE O SISTEMA DE SUA VPS: \033[1;37m"
 echo ""
+echo -e "[0] - UBUNTU 20"
+echo ""
 echo -e "[1] - UBUNTU 18"
 echo ""
 echo -e "[2] - DEBIAN 8 OU UBUNTU 14"
 echo ""
 echo -ne "\033[1;36mOpção: \033[1;37m"
 read resposta
+if [[ "$resposta" = '0' ]]; then
+    /bin/ppweb/ubu20inst.sh
 if [[ "$resposta" = '1' ]]; then
     /bin/ppweb/ubuinst.sh
 elif [[ "$resposta" = '2' ]]; then
@@ -103,12 +109,16 @@ painel_att () {
 echo ""
 echo -e "\033[1;36mSELECIONE QUAL SISTEMA QUE QUER ATUALIZAR: \033[1;37m"
 echo ""
+echo -e "[0] - PAINEL WEB NO UBUNTU 20"
+echo ""
 echo -e "[1] - PAINEL WEB NO UBUNTU 18"
 echo ""
 echo -e "[2] - PAINEL WEB NO DEBIAN 8 OU UBUNTU 14"
 echo ""
 echo -ne "\033[1;36mOpção: \033[1;37m"
 read resposta
+if [[ "$resposta" = '1' ]]; then
+    painel_att20
 if [[ "$resposta" = '1' ]]; then
     painel_att18
 elif [[ "$resposta" = '2' ]]; then
