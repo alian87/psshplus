@@ -15,22 +15,22 @@ apt-get install figlet -y > /dev/null 2>&1
 rm /bin/pweb > /dev/null 2>&1
 sleep 5
 cd /bin || exit
-wget https://github.com/JeanRocha91x/psshplus-/raw/main/gestorssh/pweb > /dev/null 2>&1
+wget https://raw.githubusercontent.com/alian87/psshplus/main3/gestorssh/pweb > /dev/null 2>&1
 chmod 777 pweb > /dev/null 2>&1
 clear
 mkdir /bin/ppweb > /dev/null 2>&1
 cd /bin/ppweb || exit
 rm *.sh > /dev/null 2>&1
-wget https://github.com/JeanRocha91x/psshplus-/raw/main/gestorssh/install.sh > /dev/null 2>&1
-wget https://github.com/JeanRocha91x/psshplus-/raw/main/gestorssh/ubuinst.sh > /dev/null 2>&1
-wget https://github.com/JeanRocha91x/psshplus-/raw/main/gestorssh/senharoot.sh > /dev/null 2>&1
-wget https://github.com/JeanRocha91x/psshplus-/raw/main/gestorssh/restbanco.sh > /dev/null 2>&1
-wget https://github.com/JeanRocha91x/psshplus-/raw/main/gestorssh/restbanco18.sh > /dev/null 2>&1
-wget https://github.com/JeanRocha91x/psshplus-/raw/main/gestorssh/empresa.sh > /dev/null 2>&1
-wget https://github.com/JeanRocha91x/psshplus-/raw/main/gestorssh/updatepainel.sh > /dev/null 2>&1
-wget https://github.com/JeanRocha91x/psshplus-/raw/main/gestorssh/updatepainel18.sh > /dev/null 2>&1
-wget https://github.com/JeanRocha91x/psshplus-/raw/main/gestorssh/updatepainelarm.sh > /dev/null 2>&1
-wget https://github.com/JeanRocha91x/psshplus-/raw/main/gestorssh/updatepainelarm18.sh > /dev/null 2>&1
+wget https://raw.githubusercontent.com/alian87/psshplus/main3/gestorssh/install.sh > /dev/null 2>&1
+wget https://raw.githubusercontent.com/alian87/psshplus/main3/gestorssh/ubuinst.sh > /dev/null 2>&1
+wget https://raw.githubusercontent.com/alian87/psshplus/main3/gestorssh/senharoot.sh > /dev/null 2>&1
+wget https://raw.githubusercontent.com/alian87/psshplus/main3/gestorssh/restbanco.sh > /dev/null 2>&1
+wget https://raw.githubusercontent.com/alian87/psshplus/main3/gestorssh/restbanco18.sh > /dev/null 2>&1
+wget https://raw.githubusercontent.com/alian87/psshplus/main3/gestorssh/empresa.sh > /dev/null 2>&1
+wget https://raw.githubusercontent.com/alian87/psshplus/main3/gestorssh/updatepainel.sh > /dev/null 2>&1
+wget https://raw.githubusercontent.com/alian87/psshplus/main3/gestorssh/updatepainel18.sh > /dev/null 2>&1
+wget https://raw.githubusercontent.com/alian87/psshplus/main3/gestorssh/updatepainelarm.sh > /dev/null 2>&1
+wget https://raw.githubusercontent.com/alian87/psshplus/main3/gestorssh/updatepainelarm18.sh > /dev/null 2>&1
 chmod 777 *.sh > /dev/null 2>&1
 clear
 echo -e "        \033[1;33m • \033[1;32mINSTALAÇÃO CONCLUÍDA\033[1;33m • \033[0m"

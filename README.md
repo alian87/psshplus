@@ -1,18 +1,18 @@
 # 👨‍💻 PAINELWEB GESTOR-SSH SWIT-T
-⚠ SISTEMAS SUPORTADOS: (DEBIAN 8, UBUNTU 14 E UBUNTU 18!).⚠ </br>
+⚠ SISTEMAS SUPORTADOS: (DEBIAN 8, UBUNTU 14, UBUNTU 18 E UBUNTU 20!).⚠ </br>
 ⚠  VPS RECOMENDADA PARA PAINEL WEB: https://www.avirahost.com.br/aff.php?aff=108 ⚠
 ```
-apt update -y; apt upgrade -y; apt install wget -y; bash <(wget -qO- https://github.com/JeanRocha91x/psshplus-/raw/main/gestorssh/instpainel.sh)
+apt update -y; apt upgrade -y; apt install wget -y; bash <(wget -qO- https://raw.githubusercontent.com/alian87/psshplus/main3/gestorssh/instpainel.sh)
 ```
 
 # ♻ SINCRONIZAR NA VPS SSH!
 ```
-apt install wget -y; bash <(wget -qO- https://github.com/JeanRocha91x/psshplus-/raw/main/gestorssh/sincpainel.sh)
+apt install wget -y; bash <(wget -qO- https://raw.githubusercontent.com/alian87/psshplus/main3/gestorssh/sincpainel.sh)
 ```
 
 # 🛂 CHECKUSER PARA O APP CONECTA4G!
 ```
-apt install wget -y; bash <(wget -qO- https://github.com/JeanRocha91x/psshplus-/raw/main/gestorssh/instcheck.sh)
+apt install wget -y; bash <(wget -qO- https://raw.githubusercontent.com/alian87/psshplus/main3/gestorssh/instcheck.sh)
 ```
 
 # ✅ ATUALIZAÇÃO 29/08/2022
