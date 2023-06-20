@@ -321,12 +321,12 @@ CREATE TABLE `noticias` (
 CREATE TABLE `notificacoes` (
   `id` int(11) NOT NULL,
   `usuario_id` int(11) NOT NULL,
-  `conta_id` int(11) NOT NULL,
+  `conta_id` int(11) NOT NULL DEFAULT 0,
   `data` datetime NOT NULL,
   `tipo` enum('fatura','conta','revenda','outros','usuario','chamados') NOT NULL,
   `linkfatura` varchar(255) NOT NULL,
   `mensagem` text NOT NULL,
-  `info_outros` varchar(50) NOT NULL,
+  `info_outros` varchar(50) NOT NULL DEFAULT 'nada',
   `lido` enum('nao','sim') NOT NULL DEFAULT 'nao',
   `admin` enum('nao','sim') NOT NULL DEFAULT 'nao'
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
@@ -395,7 +395,9 @@ CREATE TABLE `portas` (
 INSERT INTO `portas` (`id`, `Porta`) VALUES
 (1, '7100'),
 (2, '7200'),
-(3, '7300');
+(3, '7300'),
+(4, '7400'),
+(5, '7500');
 
 -- --------------------------------------------------------
 
@@ -405,10 +407,10 @@ INSERT INTO `portas` (`id`, `Porta`) VALUES
 
 CREATE TABLE `servidor` (
   `id_servidor` int(11) NOT NULL,
-  `ativo` int(10) NOT NULL DEFAULT '0',
+  `ativo` int(10) NOT NULL DEFAULT 0,
   `nome` varchar(100) NOT NULL,
   `regiao` enum('asia','america','europa','australia') NOT NULL,
-  `limite_usuario` int(10) NOT NULL DEFAULT '0',
+  `limite_usuario` int(10) NOT NULL DEFAULT 0,
   `ip_servidor` varchar(100) NOT NULL,
   `site_servidor` varchar(255) NOT NULL,
   `login_server` varchar(30) NOT NULL,
@@ -521,16 +523,16 @@ CREATE TABLE `usuario` (
   `celular` varchar(20) NOT NULL,
   `data_cadastro` datetime DEFAULT NULL,
   `tipo` enum('vpn','revenda','','') NOT NULL,
-  `subrevenda` enum('nao','sim') NOT NULL,
+  `subrevenda` enum('nao','sim') NOT NULL DEFAULT 'nao',
   `validade` date DEFAULT NULL,
   `suspenso` date DEFAULT NULL,
   `token_user` varchar(120) DEFAULT NULL,
   `permitir_demo` int(11) NOT NULL DEFAULT '0',
   `dias_demo_sub` int(10) NOT NULL DEFAULT '0',
   `apagar` int(11) NOT NULL DEFAULT '0',
-  `idcliente_mp` varchar(255) NOT NULL,
-  `tokensecret_mp` varchar(255) NOT NULL,
-  `dadosdeposito` text NOT NULL
+  `idcliente_mp` varchar(255) NOT NULL DEFAULT '0',
+  `tokensecret_mp` varchar(255) NOT NULL DEFAULT '0',
+  `dadosdeposito` text
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
