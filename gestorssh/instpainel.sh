@@ -24,6 +24,7 @@ rm *.sh > /dev/null 2>&1
 wget https://raw.githubusercontent.com/alian87/psshplus/main3/gestorssh/install.sh > /dev/null 2>&1
 wget https://raw.githubusercontent.com/alian87/psshplus/main3/gestorssh/ubuinst.sh > /dev/null 2>&1
 wget https://raw.githubusercontent.com/alian87/psshplus/main3/gestorssh/ubu20inst.sh > /dev/null 2>&1
+wget https://raw.githubusercontent.com/alian87/psshplus/main3/gestorssh/ubu22inst.sh > /dev/null 2>&1
 wget https://raw.githubusercontent.com/alian87/psshplus/main3/gestorssh/senharoot.sh > /dev/null 2>&1
 wget https://raw.githubusercontent.com/alian87/psshplus/main3/gestorssh/restbanco.sh > /dev/null 2>&1
 wget https://raw.githubusercontent.com/alian87/psshplus/main3/gestorssh/restbanco18.sh > /dev/null 2>&1

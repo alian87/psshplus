@@ -6,48 +6,48 @@ function inst_base
 	apt dist-upgrade -y > /dev/null 2>&1
 	apt install apache2 -y > /dev/null 2>&1
 	apt install cron curl unzip dirmngr apt-transport-https -y > /dev/null 2>&1
-
-	apt install php7.4 libapache2-mod-php7.4 php7.4-xml php7.4-curl php7.4-mbstring -y > /dev/null 2>&1
-	
+	apt install php8.1 libapache2-mod-php8.1 php8.1-xml php8.1-curl php8.1-mbstring -y > /dev/null 2>&1	
 	apt install -y build-essential > /dev/null 2>&1
 	apt install php php-pear php-dev libmcrypt-dev -y > /dev/null 2>&1
 	pecl channel-update pecl.php.net > /dev/null 2>&1
 	pecl update-channels > /dev/null 2>&1
 	echo | pecl install mcrypt > /dev/null 2>&1
-	#echo "extension=mcrypt.so" >> /etc/php/7.4/cli/php.ini
-	echo "extension=mcrypt.so" >> /etc/php/7.4/apache2/php.ini
-	echo "extension=mcrypt.so" >> /etc/php/7.4/mods-available/mcrypt.ini
+	#echo "extension=mcrypt.so" >> /etc/php/8.1/cli/php.ini
+	echo "extension=mcrypt.so" >> /etc/php/8.1/apache2/php.ini
+	echo "extension=mcrypt.so" >> /etc/php/8.1/mods-available/mcrypt.ini
 	systemctl restart apache2
 
-	apt-get install mariadb-server -y > /dev/null 2>&1
+	apt install expect -y > /dev/null 2>&1
+	apt install mariadb-server -y > /dev/null 2>&1
 	cd || exit
-	mysqladmin -u root password "$pwdroot"
-	mysql -u root -p"$pwdroot" -e "UPDATE mysql.user SET Password=PASSWORD('$pwdroot') WHERE User='root'"
+	echo '[client]' > /tmp/mysql_config.cnf
+	echo "password = $pwdroot" >> /tmp/mysql_config.cnf
+	wget https://raw.githubusercontent.com/alian87/psshplus/main3/gestorssh/configurar_usuario.expect > /dev/null 2>&1
+	chmod +x configurar_usuario.expect > /dev/null 2>&1
+	sed -i "s/senha_root/$pwdroot/" configurar_usuario.expect > /dev/null 2>&1
+	./configurar_usuario.expect > /dev/null 2>&1
 	mysql -u root -p"$pwdroot" -e "DELETE FROM mysql.user WHERE User=''"
 	mysql -u root -p"$pwdroot" -e "DELETE FROM mysql.db WHERE Db='test' OR Db='test\_%'"
 	mysql -u root -p"$pwdroot" -e "FLUSH PRIVILEGES"
-	#mysql -u root -p"$pwdroot" -e "CREATE USER 'root'@'localhost';'"
 	mysql -u root -p"$pwdroot" -e "CREATE DATABASE sshplus;"
 	mysql -u root -p"$pwdroot" -e "GRANT ALL PRIVILEGES ON root.* To 'root'@'localhost' IDENTIFIED BY '$pwdroot';"
 	mysql -u root -p"$pwdroot" -e "FLUSH PRIVILEGES"
 	echo '[mysqld]' >> /etc/mysql/my.cnf
 	echo 'max_connections = 1000' >> /etc/mysql/my.cnf
-	#echo '[mysqld]
-	#max_connections = 1000' >> /etc/mysql/my.cnf
-	apt install php7.4-mysql -y > /dev/null 2>&1
-	
+	apt install php8.1-mysql -y > /dev/null 2>&1
+	rm /tmp/mysql_config.cnf
+	rm configurar_usuario.expect
 	phpenmod mcrypt
 	systemctl restart apache2
-	ln -s /usr/share/phpmyadmin /var/www/html/phpmyadmin
-	apt install php7.4-ssh2 -y > /dev/null 2>&1
-	php -d display_errors=Off -m 2>/dev/null | grep ssh2 > /dev/null 2>&1
+	apt install php8.1-ssh2 -y > /dev/null 2>&1
+	php -m | grep ssh2 > /dev/null 2>&1
 
 	curl -sS https://getcomposer.org/installer | php > /dev/null 2>&1
 	mv composer.phar /usr/local/bin/composer
 	chmod +x /usr/local/bin/composer
 	cd /var/www/html || exit
 	wget https://raw.githubusercontent.com/alian87/psshplus/main3/gestorssh/gestorssh18.zip > /dev/null 2>&1
-	apt-get install unzip > /dev/null 2>&1
+	apt install unzip > /dev/null 2>&1
 	unzip gestorssh18.zip > /dev/null 2>&1
 	chmod -R 777 /var/www/html
 	rm gestorssh18.zip index.html > /dev/null 2>&1
@@ -55,18 +55,6 @@ function inst_base
 	(echo yes; echo yes; echo yes; echo yes) | composer require phpseclib/phpseclib:~2.0 > /dev/null 2>&1
 	systemctl restart mysql
 	clear
-}
-function phpmadm_old
-{
-	cd /usr/share || exit
-	wget https://files.phpmyadmin.net/phpMyAdmin/5.1.0/phpMyAdmin-5.1.0-all-languages.zip > /dev/null 2>&1
-	unzip phpMyAdmin-5.1.0-all-languages.zip > /dev/null 2>&1
-	mv phpMyAdmin-5.1.0-all-languages phpmyadmin
-	chmod -R 0755 phpmyadmin
-	ln -s /usr/share/phpmyadmin /var/www/html/phpmyadmin
-	systemctl restart apache2 
-	rm phpMyAdmin-5.1.0-all-languages.zip
-	cd /root || exit
 }
 
 function phpmadm 
@@ -212,8 +200,8 @@ echo -e "\033[1;36m SENHA:\033[1;37m $pwdroot\033[0m"
 echo ""
 echo -e "\033[1;33m MAIS INFORMAÇÕES \033[1;31m(\033[1;36mTELEGRAM\033[1;31m): \033[1;37m@swittecnologia\033[0m"
 echo ""
-sed -i "s;upload_max_filesize = 2M;upload_max_filesize = 64M;g" /etc/php/7.4/apache2/php.ini > /dev/null 2>&1
-sed -i "s;post_max_size = 8M;post_max_size = 64M;g" /etc/php/7.4/apache2/php.ini > /dev/null 2>&1
+sed -i "s;upload_max_filesize = 2M;upload_max_filesize = 64M;g" /etc/php/8.1/apache2/php.ini > /dev/null 2>&1
+sed -i "s;post_max_size = 8M;post_max_size = 64M;g" /etc/php/8.1/apache2/php.ini > /dev/null 2>&1
 echo -e "\033[1;36m REINICIANDO\033[1;37m EM 20 SEGUNDOS\033[0m"
 sleep 20
 shutdown -r now

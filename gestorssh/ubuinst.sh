@@ -7,9 +7,6 @@ function inst_base
 	apt dist-upgrade -y > /dev/null 2>&1
 	apt install apache2 -y > /dev/null 2>&1
 	apt install cron curl unzip dirmngr apt-transport-https -y > /dev/null 2>&1
-	#add-apt-repository ppa:ondrej/php -y > /dev/null 2>&1
-	apt update > /dev/null 2>&1
-
 	apt install php-dev libmcrypt-dev gcc make autoconf libc-dev pkg-config -y > /dev/null 2>&1
 	echo | pecl install mcrypt-1.0.1 > /dev/null 2>&1
 	#echo "extension=mcrypt.so" | sudo tee -a /etc/php/7.2/cli/conf.d/mcrypt.ini > /dev/null 2>&1
@@ -31,12 +28,12 @@ function inst_base
 	mysql -u root -p"$pwdroot" -e "CREATE DATABASE sshplus;"
 	mysql -u root -p"$pwdroot" -e "GRANT ALL PRIVILEGES ON root.* To 'root'@'localhost' IDENTIFIED BY '$pwdroot';"
 	mysql -u root -p"$pwdroot" -e "FLUSH PRIVILEGES"
-	echo '[mysqld]
-	max_connections = 1000' >> /etc/mysql/my.cnf
+	echo '[mysqld]' >> /etc/mysql/my.cnf
+	echo 'max_connections = 1000' >> /etc/mysql/my.cnf
 	apt install php7.2-mysql -y > /dev/null 2>&1
 	phpenmod mcrypt
 	systemctl restart apache2
-	ln -s /usr/share/phpmyadmin /var/www/html/phpmyadmin
+	ln -s /usr/share/phpmyadmin /var/www/html/phpmyadmin > /dev/null 2>&1
 	apt install php7.2-ssh2 -y > /dev/null 2>&1
 	php -m | grep ssh2 > /dev/null 2>&1
 	curl -sS https://getcomposer.org/installer | php > /dev/null 2>&1
@@ -53,16 +50,44 @@ function inst_base
 	systemctl restart mysql
 	clear
 }
-function phpmadm
+function phpmadm_old
 {
 	cd /usr/share || exit
 	wget https://files.phpmyadmin.net/phpMyAdmin/5.1.0/phpMyAdmin-5.1.0-all-languages.zip > /dev/null 2>&1
 	unzip phpMyAdmin-5.1.0-all-languages.zip > /dev/null 2>&1
 	mv phpMyAdmin-5.1.0-all-languages phpmyadmin
 	chmod -R 0755 phpmyadmin
-	ln -s /usr/share/phpmyadmin /var/www/html/phpmyadmin
+	ln -s /usr/share/phpmyadmin /var/www/html/phpmyadmin > /dev/null 2>&1
 	systemctl restart apache2 
 	rm phpMyAdmin-5.1.0-all-languages.zip
+	cd /root || exit
+}
+function phpmadm 
+{
+	cd /usr/share || exit
+	wget https://files.phpmyadmin.net/phpMyAdmin/5.2.1/phpMyAdmin-5.2.1-all-languages.zip > /dev/null 2>&1
+	unzip phpMyAdmin-5.2.1-all-languages.zip > /dev/null 2>&1
+	mv phpMyAdmin-5.2.1-all-languages phpmyadmin
+	chmod -R 0755 phpmyadmin
+	ln -s /usr/share/phpmyadmin /var/www/html/phpmyadmin
+	systemctl restart apache2 
+	rm phpMyAdmin-5.2.1-all-languages.zip
+	mkdir /usr/share/phpmyadmin/tmp
+	CHAVE_BLOWFISH=$(openssl rand -hex 16)
+	echo "<?php" > /usr/share/phpmyadmin/config.inc.php
+	echo "declare(strict_types=1);" >> /usr/share/phpmyadmin/config.inc.php
+	echo "\$cfg['blowfish_secret'] = '$CHAVE_BLOWFISH';" >> /usr/share/phpmyadmin/config.inc.php
+	echo "\$i = 0;" >> /usr/share/phpmyadmin/config.inc.php
+	echo "\$i++;" >> /usr/share/phpmyadmin/config.inc.php
+	echo "\$cfg['Servers'][\$i]['auth_type'] = 'cookie';" >> /usr/share/phpmyadmin/config.inc.php
+	echo "\$cfg['Servers'][\$i]['host'] = 'localhost';" >> /usr/share/phpmyadmin/config.inc.php
+	echo "\$cfg['Servers'][\$i]['compress'] = false;" >> /usr/share/phpmyadmin/config.inc.php
+	echo "\$cfg['Servers'][\$i]['AllowNoPassword'] = false;" >> /usr/share/phpmyadmin/config.inc.php
+	echo "\$cfg['UploadDir'] = '';" >> /usr/share/phpmyadmin/config.inc.php
+	echo "\$cfg['SaveDir'] = '';" >> /usr/share/phpmyadmin/config.inc.php
+	echo "\$cfg['TempDir'] = '/usr/share/phpmyadmin/tmp/';" >> /usr/share/phpmyadmin/config.inc.php
+	chmod -R 0777 /usr/share/phpmyadmin/tmp
+	systemctl restart apache2
 	cd /root || exit
 }
 
@@ -174,8 +199,8 @@ echo -e "\033[1;36m SENHA:\033[1;37m $pwdroot\033[0m"
 echo ""
 echo -e "\033[1;33m MAIS INFORMAÇÕES \033[1;31m(\033[1;36mTELEGRAM\033[1;31m): \033[1;37m@swittecnologia\033[0m"
 echo ""
-sed -i "s;upload_max_filesize = 2M;upload_max_filesize = 64M;g" /etc/php/7.4/apache2/php.ini > /dev/null 2>&1
-sed -i "s;post_max_size = 8M;post_max_size = 64M;g" /etc/php/7.4/apache2/php.ini > /dev/null 2>&1
+sed -i "s;upload_max_filesize = 2M;upload_max_filesize = 64M;g" /etc/php/7.2/apache2/php.ini > /dev/null 2>&1
+sed -i "s;post_max_size = 8M;post_max_size = 64M;g" /etc/php/7.2/apache2/php.ini > /dev/null 2>&1
 echo -e "\033[1;36m REINICIANDO\033[1;37m EM 20 SEGUNDOS\033[0m"
 sleep 20
 shutdown -r now

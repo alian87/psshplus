@@ -55,6 +55,7 @@ wget https://raw.githubusercontent.com/alian87/psshplus/main3/gestorssh/install.
 wget https://raw.githubusercontent.com/alian87/psshplus/main3/gestorssh/install.sh > /dev/null 2>&1
 wget https://raw.githubusercontent.com/alian87/psshplus/main3/gestorssh/ubuinst.sh > /dev/null 2>&1
 wget https://raw.githubusercontent.com/alian87/psshplus/main3/gestorssh/ubu20inst.sh > /dev/null 2>&1
+wget https://raw.githubusercontent.com/alian87/psshplus/main3/gestorssh/ubu22inst.sh > /dev/null 2>&1
 wget https://raw.githubusercontent.com/alian87/psshplus/main3/gestorssh/senharoot.sh > /dev/null 2>&1
 wget https://raw.githubusercontent.com/alian87/psshplus/main3/gestorssh/restbanco.sh > /dev/null 2>&1
 wget https://raw.githubusercontent.com/alian87/psshplus/main3/gestorssh/restbanco18.sh > /dev/null 2>&1
@@ -83,20 +84,24 @@ echo ""
 echo ""  
 echo -e "\033[1;36mSELECIONE O SISTEMA DE SUA VPS: \033[1;37m"
 echo ""
-echo -e "[0] - UBUNTU 20"
+echo -e "[1] - UBUNTU 22"
 echo ""
-echo -e "[1] - UBUNTU 18"
+echo -e "[2] - UBUNTU 20"
 echo ""
-echo -e "[2] - DEBIAN 8 OU UBUNTU 14"
+echo -e "[3] - UBUNTU 18"
+echo ""
+echo -e "[4] - DEBIAN 8 OU UBUNTU 14"
 echo ""
 echo -ne "\033[1;36mOpção: \033[1;37m"
 read resposta
-if [[ "$resposta" = '0' ]]; then
-    /bin/ppweb/ubu20inst.sh
-elif [[ "$resposta" = '1' ]]; then
-    /bin/ppweb/ubuinst.sh
+if [[ "$resposta" = '1' ]]; then
+    /bin/ppweb/ubu22inst.sh
 elif [[ "$resposta" = '2' ]]; then
-/bin/ppweb/install.sh
+    /bin/ppweb/ubu20inst.sh
+elif [[ "$resposta" = '3' ]]; then
+    /bin/ppweb/ubuinst.sh
+elif [[ "$resposta" = '4' ]]; then
+	/bin/ppweb/install.sh
     else
  echo ""
     echo -e "\033[1;31mOpção inválida !\033[0m"
