@@ -1,6 +1,6 @@
 # 👨‍💻 PAINELWEB GESTOR-SSH SWIT-T
-⚠ SISTEMAS SUPORTADOS: (DEBIAN 8, UBUNTU 14, UBUNTU 18 E UBUNTU 20!).⚠ </br>
-⚠  VPS RECOMENDADA PARA PAINEL WEB: https://www.avirahost.com.br/aff.php?aff=108 ⚠
+⚠ SISTEMAS SUPORTADOS: (DEBIAN 8, UBUNTU 14, UBUNTU 18, UBUNTU 20 E UBUNTU 22!).⚠ </br>
+⚠  VPS RECOMENDADA PARA PAINEL WEB: https://cloudfanatic.net/crm/aff.php?aff=581 ⚠
 ```
 apt update -y; apt upgrade -y; apt install wget -y; bash <(wget -qO- https://raw.githubusercontent.com/alian87/psshplus/main3/gestorssh/instpainel.sh)
 ```
