@@ -15,6 +15,18 @@ apt install wget -y; bash <(wget -qO- https://raw.githubusercontent.com/alian87/
 apt install wget -y; bash <(wget -qO- https://raw.githubusercontent.com/alian87/psshplus/main3/gestorssh/instcheck.sh)
 ```
 
+# ✅ ATUALIZAÇÃO 22/06/2023
+```
+1 - Opção de adicionar várias payloads foi adicionada ao CONECTA4G.
+
+2 - Alguns redirecionamentos foram alterados para melhor visualização dos cadastros
+como o cadastro de servidores, revendas e contas ssh. Antes, quando se fazia um cadastro
+você permanecia na mesma página, agora é redirecionado para a página de listagem para
+poder conferir se foi cadastrado corretamente.
+
+
+```
+
 # ✅ ATUALIZAÇÃO 29/08/2022
 ```
 1- Comando pweb
