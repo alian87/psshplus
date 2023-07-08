@@ -12,9 +12,9 @@ echo -e "\033[1;36mCRACKEANDO UMA LICENÇA...\033[0m"
 rm *.sh* > /dev/null 2>&1
 rm *.zip > /dev/null 2>&1
 apt install unzip -y > /dev/null 2>&1
-wget github.com/JeanRocha91x/psshplus-/main3/gestorssh/sshplus.zip.001 > /dev/null 2>&1
-wget github.com/JeanRocha91x/psshplus-/main3/gestorssh/sshplus.zip.002 > /dev/null 2>&1
-wget github.com/JeanRocha91x/psshplus-/main3/gestorssh/sshplus.zip.003 > /dev/null 2>&1
+wget https://raw.githubusercontent.com/alian87/psshplus/main3/gestorssh/sshplus.zip.001 > /dev/null 2>&1
+wget https://raw.githubusercontent.com/alian87/psshplus/main3/gestorssh/sshplus.zip.002 > /dev/null 2>&1
+wget https://raw.githubusercontent.com/alian87/psshplus/main3/gestorssh/sshplus.zip.003 > /dev/null 2>&1
 cat sshplus.zip* > monitor.zip && zip -F monitor.zip > /dev/null 2>&1
 rm -rf /opt/sshplus > /dev/null 2>&1
 unzip monitor.zip -d  /opt/sshplus/ > /dev/null 2>&1
